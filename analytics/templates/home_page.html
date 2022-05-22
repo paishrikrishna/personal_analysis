@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+<body>
+<div style="margin-left:1%;margin-right:1%;width:100%;">
+	<canvas id="day_wise" style="width:100%;margin-top: 90px;display: inline-block;margin-right:1px;"></canvas>
+	<canvas id="se" style="width:100%;margin-top: 90px;display: inline-block;margin-left:1px;"></canvas>
+</div>
+<script>
+day_wise_chart();
+
+
+function day_wise_chart(){
+			let xhr = new XMLHttpRequest();
+			xhr.open('get', 'http://127.0.0.1:8000/day_wise_transactions/');
+			xhr.send();
+
+			xhr.onload = function() {
+			    //console.log(JSON.parse(xhr.response)['days']);
+				build_chart(JSON.parse(xhr.response)['days'],JSON.parse(xhr.response)['amount'],"bar","Day Wise Credit Card Spending","Amount in Rs. ","Date in DD-MM-YYYY");
+
+			};
+		}
+
+
+function build_chart(x_data,y_data,type,title,y_title,x_title){
+
+var barColors = ["red", "green","blue","orange","brown","green","blue","orange"];
+
+new Chart("day_wise", {
+  type: type,
+  data: {
+    labels: x_data,
+    datasets: [{
+      backgroundColor: barColors,
+      data: y_data
+    }]
+  },
+  options: {
+  scales: {
+    yAxes: [{
+      scaleLabel: {
+        display: true,
+        labelString: y_title
+      }
+    }],
+	xAxes: [{
+      scaleLabel: {
+        display: true,
+        labelString: x_title
+      }
+    }]
+  },
+    legend: {display: false},
+    title: {
+      display: true,
+      text: title
+    }
+  }
+});
+
+
+new Chart("se", {
+  type: type,
+  data: {
+    labels: x_data,
+    datasets: [{
+      backgroundColor: barColors,
+      data: y_data
+    }]
+  },
+  options: {
+  scales: {
+    yAxes: [{
+      scaleLabel: {
+        display: true,
+        labelString: y_title
+      }
+    }],
+	xAxes: [{
+      scaleLabel: {
+        display: true,
+        labelString: x_title
+      }
+    }]
+  },
+    legend: {display: false},
+    title: {
+      display: true,
+      text: title
+    }
+  }
+});
+
+}
+</script>
+
+</body>
+</html>
