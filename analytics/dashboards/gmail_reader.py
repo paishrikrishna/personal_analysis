@@ -86,7 +86,7 @@ def credit_card_emails():
             #print("Subject: ", subject)
             #print("From: ", sender)
             #print("Message: Paid Rs. {price} to {receiver} ".format(price=amount,receiver=target))
-            #print("\n")
+            
             if data not in existing_data:
                 row_number = int(row_number) + 1
                 if row_number<=9:
