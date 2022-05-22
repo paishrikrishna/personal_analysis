@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect
 from django.template import loader  
 from django.http import HttpResponse,JsonResponse
 from dashboards.database_queires import firebase_actions
-firebase_obj = firebase_actions("dashboards/self-f70d2-firebase-adminsdk-5noxc-2b24c749dd.json")
+firebase_obj = firebase_actions("/home/RedBullAmgp/personal_analysis/analytics/dashboards/self-f70d2-firebase-adminsdk-5noxc-2b24c749dd.json")
 
 # Create your views here.
 
