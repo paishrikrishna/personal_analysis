@@ -12,7 +12,7 @@ day_wise_chart();
 
 function day_wise_chart(){
 			let xhr = new XMLHttpRequest();
-			xhr.open('get', 'http://127.0.0.1:8000/day_wise_transactions/');
+			xhr.open('get', 'http://redbullamgp.pythonanywhere.com/day_wise_transactions/');
 			xhr.send();
 
 			xhr.onload = function() {
