@@ -21,5 +21,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',home_page),
     path('login/',login),
-    path('day_wise_transactions/',day_wise_json)
+    path('day_wise_transactions/',day_wise_transactions),
+    path('day_wise_json/',day_wise_json)
 ]
