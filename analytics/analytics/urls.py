@@ -15,11 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from dashboards.views import home_page,login,day_wise_transactions
+from dashboards.views import home_page,login,day_wise_transactions,day_wise_json
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',home_page),
     path('login/',login),
-    path('day_wise_transactions/',day_wise_transactions)
+    path('day_wise_transactions/',day_wise_json)
 ]
