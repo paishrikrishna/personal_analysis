@@ -23,5 +23,5 @@ urlpatterns = [
     path('login/',login),
     path('day_wise_transactions/',day_wise_transactions),
     path('day_wise_json/',day_wise_json),
-    path('receiver_wise_json/',receiver_wise_json
+    path('receiver_wise_json/',receiver_wise_json)
 ]
