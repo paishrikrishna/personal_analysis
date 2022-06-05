@@ -25,10 +25,7 @@ class firebase_actions:
         self.data = {}
         for self.record in self.initialize_collection_object('credit_card').stream():
             self.details = self.record.to_dict()
-            try:
-                self.data[self.details["date"].split(" ")[0]] += float(self.details["amount"])
-            except:
-                self.data[self.details["date"].split(" ")[0]] = float(self.details["amount"])
+            self.data[self.details["date"]] = float(self.details["amount"])
                 
         return self.data
     
