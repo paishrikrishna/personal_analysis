@@ -23,3 +23,7 @@ def login(request):
 def day_wise_transactions(request):
     data = firebase_obj.day_wise_transactions()
     return JsonResponse({'days':list(data.keys()),'amount':list(data.values())})
+
+def day_wise_json(request):
+    data = firebase_obj.day_wise_transactions()
+    return JsonResponse(data)
