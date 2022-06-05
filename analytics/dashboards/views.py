@@ -28,7 +28,7 @@ def day_wise_json(request):
     data = firebase_obj.day_wise_transactions()
     result = []
     for (date,amount) in data.items():
-        result.append({"date":date.split(" ")[0],"time":date.split(" ")[1],"amount":amount,"date_order_num":int(date.split("-")[1]+date.split("-")[0]),"month_aplh":month[int(date.split("-")[1])-1]})
+        result.append({"date":date.split(" ")[0],"time":date.split(" ")[1],"amount":amount,"date_order_num":int(date.split("-")[1]+date.split("-")[0]+date.split(" ")[1].replace(":","")),"month_aplh":month[int(date.split("-")[1])-1]})
     return JsonResponse({"data":result})
 
 def receiver_wise_json(request):
