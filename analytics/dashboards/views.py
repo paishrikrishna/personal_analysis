@@ -3,7 +3,7 @@ from django.template import loader
 from django.http import HttpResponse,JsonResponse
 from dashboards.database_queires import firebase_actions
 firebase_obj = firebase_actions("/home/RedBullAmgp/personal_analysis/analytics/dashboards/self-f70d2-firebase-adminsdk-5noxc-2b24c749dd.json")
-
+month = ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC']
 # Create your views here.
 
 def home_page(request):
@@ -28,5 +28,5 @@ def day_wise_json(request):
     data = firebase_obj.day_wise_transactions()
     result = []
     for (date,amount) in data.items():
-        result.append({"date":date,"amount":amount})
+        result.append({"date":date,"amount":amount,"month_num":date.split("-")[1],"month_aplh":month[int(date.split("-")[1])-1]})
     return JsonResponse({"data":result})
