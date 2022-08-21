@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from dashboards.views import home_page,login,day_wise_transactions,day_wise_json,receiver_wise_json
+from dashboards.views import home_page,login,day_wise_transactions,day_wise_json,receiver_wise_json,credit_data_refresh
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -23,5 +23,6 @@ urlpatterns = [
     path('login/',login),
     path('day_wise_transactions/',day_wise_transactions),
     path('day_wise_json/',day_wise_json),
-    path('receiver_wise_json/',receiver_wise_json)
+    path('receiver_wise_json/',receiver_wise_json),
+    path('credit_data_refresh/',credit_data_refresh)
 ]

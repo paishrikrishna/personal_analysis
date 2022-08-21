@@ -6,12 +6,13 @@ import os.path
 import base64
 import email
 from bs4 import BeautifulSoup
-from database_queires import firebase_actions
-firebase_obj = firebase_actions("self-f70d2-firebase-adminsdk-5noxc-2b24c749dd.json")
+from dashboards.database_queires import firebase_actions
+
+#firebase_obj = firebase_actions("/home/shripais003/personal_analysis/analytics/dashboards/self-f70d2-firebase-adminsdk-5noxc-2b24c749dd.json")
   
 SCOPES = ['https://www.googleapis.com/auth/gmail.readonly']
   
-def credit_card_emails():
+def credit_card_emails(firebase_obj):
     existing_data = []
     for doc in firebase_obj.existing_data('credit_card'):
         existing_data.append(doc.to_dict())
@@ -76,7 +77,5 @@ def credit_card_emails():
             
         except:
             pass
-  
-if __name__ == '__main__':
-    credit_card_emails()
+
     
