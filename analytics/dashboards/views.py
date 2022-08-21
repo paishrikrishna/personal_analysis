@@ -45,3 +45,4 @@ def receiver_wise_json(request):
 
 def credit_data_refresh(request):
     credit_card_emails(firebase_obj)
+    return JsonResponse({"status":200})
