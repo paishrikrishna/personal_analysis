@@ -2,6 +2,7 @@ from django.shortcuts import render,redirect
 from django.template import loader  
 from django.http import HttpResponse,JsonResponse
 from dashboards.database_queires import firebase_actions
+from dashboards.gmail_reader import *
 
 
 
@@ -42,3 +43,5 @@ def receiver_wise_json(request):
     return JsonResponse({"data":result})
 
 
+def credit_data_refresh(request):
+    credit_card_emails(firebase_obj)
