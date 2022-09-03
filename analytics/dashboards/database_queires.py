@@ -1,6 +1,7 @@
 import firebase_admin
 from firebase_admin import credentials, firestore
 import random
+import datetime
 
 
 class firebase_actions:
@@ -26,7 +27,9 @@ class firebase_actions:
         for self.record in self.initialize_collection_object('credit_card').stream():
             self.data = {}
             self.details = self.record.to_dict()
-            self.data["date"] = self.details["date"]
+            self.date = self.details["date"].split(' ')[0].split('-')
+            self.time = self.details["date"].split(' ')[1].split(':')
+            self.data["date"] = datetime.datetime(int(self.date[2]),int(self.date[1]),int(self.date[0]),int(self.time[0]),int(self.time[1]),int(self.time[2]))
             self.data["amount"] = float(self.details["amount"])
             self.data_list.append(self.data)
                 
