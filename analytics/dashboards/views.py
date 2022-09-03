@@ -3,9 +3,10 @@ from django.template import loader
 from django.http import HttpResponse,JsonResponse
 from dashboards.database_queires import firebase_actions
 from dashboards.gmail_reader import *
+from dashboards.keen_dashboard import keen_dashboard_queries
 
 
-
+sample_data = keen_dashboard_queries()
 firebase_obj = firebase_actions("/home/shripais003/personal_analysis/analytics/dashboards/self-f70d2-firebase-adminsdk-5noxc-2b24c749dd.json")
 month = ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC']
 # Create your views here.
@@ -45,4 +46,9 @@ def receiver_wise_json(request):
 
 def credit_data_refresh(request):
     credit_card_emails(firebase_obj)
+    return JsonResponse({"status":200})
+
+
+def update_dashboards(request):
+    sample_data.push_data("Sample")
     return JsonResponse({"status":200})
