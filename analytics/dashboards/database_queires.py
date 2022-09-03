@@ -22,12 +22,15 @@ class firebase_actions:
         return self.initialize_collection_object(collection_name).stream()
     
     def day_wise_transactions(self):
-        self.data = {}
+        self.data_list = []
         for self.record in self.initialize_collection_object('credit_card').stream():
+            self.data = {}
             self.details = self.record.to_dict()
-            self.data[self.details["date"]] = float(self.details["amount"])
+            self.data["date"] = self.details["date"]
+            self.data["amount"] = float(self.details["amount"])
+            self.data_list.append(self.data)
                 
-        return self.data
+        return self.data_list
     
     def receiver_wise_transactions(self):
         self.data = {}
