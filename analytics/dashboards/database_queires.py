@@ -29,7 +29,8 @@ class firebase_actions:
             self.details = self.record.to_dict()
             self.date = self.details["date"].split(' ')[0].split('-')
             self.time = self.details["date"].split(' ')[1].split(':')
-            self.data["date"] = datetime.datetime(int(self.date[2]),int(self.date[1]),int(self.date[0]),int(self.time[0]),int(self.time[1]),int(self.time[2]))
+            self.data["date"] = self.date[2]+'-'+self.date[1]+'-'+self.date[0]
+            self.data["time"] = self.time[0]+':'+self.time[1]+':'+self.time[2]
             self.data["amount"] = float(self.details["amount"])
             self.data_list.append(self.data)
                 
