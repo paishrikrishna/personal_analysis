@@ -53,3 +53,5 @@ def update_dashboards(request):
     data = firebase_obj.day_wise_transactions()
     sample_data.push_data_lsit("Credit_Day_wise_Transactions",data)
     return JsonResponse({"status":200})
+
+
