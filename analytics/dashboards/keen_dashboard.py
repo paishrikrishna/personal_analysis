@@ -8,11 +8,10 @@ class keen_dashboard_queries:
   def __init__(self):
     self.keen = keen
     
-  def push_data(self,stream_name):
-    try:
-      self.keen.add_event(stream_name,{"Test":'Test'})
-      return 200
-    except:
-      return 400
-
-
+  def push_data(self,stream_name,data):
+    self.keen.add_event(stream_name,data)
+    
+  def push_data_lsit(self,stream_name,data_list):
+    for self.data in data_list:
+      self.push_data(stream_name,self.data)
+    
